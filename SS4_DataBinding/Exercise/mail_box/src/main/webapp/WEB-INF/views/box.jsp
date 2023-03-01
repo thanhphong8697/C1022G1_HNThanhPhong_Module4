@@ -10,27 +10,42 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <title>Title</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+        }
+
+        .border {
+            margin-top: 100px;
+            border: 3px solid black;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
-<div>
-  <h1>Email Infomation</h1>
-  <div>
-    <div>Languages: ${mailBox.languages}</div>
-    <div>Page size: Show ${mailBox.pageSize} emails per page</div>
-    <div>Spam filter: ${mailBox.spamsFilter}</div>
-    <div>Signature: ${mailBox.signature}</div>
-    <button>
-      <a href="/updateForm">Update</a>
-    </button>
-  </div>
+<div class="border">
+    <h1 style="background-color: darkgray; font-weight: bold; text-align: center">Email Infomation</h1>
+    <div>
+        <div>Languages: ${mailBox.languages}</div>
+        <div>Page size: Show ${mailBox.pageSize} emails per page</div>
+        <div>Spam filter: ${mailBox.spamsFilter}</div>
+        <div>Signature: ${mailBox.signature}</div>
+        <div style="text-align: center">
+            <button class="btn btn-primary">
+                <a style="color: white" href="/updateForm">Update</a>
+            </button>
+        </div>
+
+    </div>
 </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

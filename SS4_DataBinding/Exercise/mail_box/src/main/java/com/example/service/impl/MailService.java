@@ -11,8 +11,14 @@ import org.springframework.stereotype.Service;
 public class MailService implements IMailService {
     @Autowired
     IMailRepository iMailRepository;
+
     @Override
     public MailBox mailBox() {
         return iMailRepository.mailBox();
+    }
+
+    @Override
+    public void update(MailBox mailBoxUpdate) {
+        iMailRepository.update(mailBoxUpdate);
     }
 }

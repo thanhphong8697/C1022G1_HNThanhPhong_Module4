@@ -20,34 +20,48 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+        }
+
+        .border {
+            margin-top: 100px;
+            border: 3px solid black;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
-<div>
-    <h1>Update</h1>
+<div class="border">
+    <h1 style="text-align: center">Update</h1>
     <form:form modelAttribute="mailBox" action="/updateMail" method="post">
         <div>
             <label>Languages</label>
-            <form:select path="languages" items="${language}" />
+            <form:select path="languages" items="${language}"/>
         </div>
         <div>
-            <lable>Page Size: show </lable>
-            <form:select path="pageSize" items="${pageSizes}" />
+            <lable>Page Size: show</lable>
+            <form:select path="pageSize" items="${pageSizes}"/>
             <span> emails per page</span>
         </div>
         <div>
             <lable>Spam Filter</lable>
-            <form:checkbox path="spamsFilter" value="${mailBox.spamsFilter}" />
+            <form:checkbox path="spamsFilter" value="${mailBox.spamsFilter}"/>
         </div>
         <div>
             <lable>Signature</lable>
-            <form:textarea path="signature" />
+            <form:textarea path="signature"/>
         </div>
-        <button type="button">
-            <a stype="text-decoration" href="/mail">Cancel</a>
-        </button>
-        <button type="submit">
-            Update
-        </button>
+        <div style="text-align: center">
+            <button type="button" class="btn btn-primary">
+                <a style="color: white; text-decoration: none" href="/mail">Cancel</a>
+            </button>
+            <button type="submit" class="btn btn-primary">
+                Update
+            </button>
+        </div>
     </form:form>
 </div>
 <!-- Optional JavaScript -->
