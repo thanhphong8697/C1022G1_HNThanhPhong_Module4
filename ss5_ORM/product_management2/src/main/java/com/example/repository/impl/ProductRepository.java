@@ -40,12 +40,12 @@ public class ProductRepository implements IProductRepository {
         Session session = null;
         try {
             session = SessionUtil.sessionFactory.openSession();
-            productList = session.createQuery("from Product where nameSearch like concat('%', :name, '%') ")
-                    .setParameter("name", nameSearch).getResultList();
+            productList = session.createQuery("from Product where name like concat('%', :nameSearch, '%') ")
+                    .setParameter("nameSearch", nameSearch).getResultList();
         } catch (HibernateException e) {
             e.printStackTrace();
-        }finally {
-            if (session != null){
+        } finally {
+            if (session != null) {
                 session.close();
             }
         }
@@ -65,11 +65,11 @@ public class ProductRepository implements IProductRepository {
             session.persist(product);
             transaction.commit();
         } catch (HibernateException e) {
-            if (transaction != null ){
+            if (transaction != null) {
                 transaction.rollback();
             }
-        }finally {
-            if (session != null){
+        } finally {
+            if (session != null) {
                 session.close();
             }
         }
@@ -83,10 +83,11 @@ public class ProductRepository implements IProductRepository {
 //            }
 //        }
 //
-        String query = "select p from Product c where c.id = :id";
+        String query = "select p from Product p where p.id = :id";
         TypedQuery<Product> productTypedQuery = SessionUtil.entityManager.createQuery(query, Product.class);
-        productTypedQuery.setParameter("id",id);
+        productTypedQuery.setParameter("id", id);
         return productTypedQuery.getSingleResult();
+    }
 
     @Override
     public void update(Product product) {
@@ -98,29 +99,29 @@ public class ProductRepository implements IProductRepository {
 //                value.setProducer(product.getProducer());
 //            }
 //        }
-            Session session = null;
-            Transaction transaction = null;
-            try {
-                session = SessionUtil.sessionFactory.openSession();
-                transaction = session.beginTransaction();
-                Product products = findById(product.getId());
-                products.setName(product.getName());
-                products.setPrice(product.getPrice());
-                products.setStatus(product.getStatus());
-                products.setProducer(product.getProducer());
-                session.saveOrUpdate(products);
-                transaction.commit();
-            } catch (HibernateException e) {
-                if (transaction != null ){
-                    transaction.rollback();
-                }
-            }finally {
-                if (session != null){
-                    session.close();
-                }
+        Session session = null;
+        Transaction transaction = null;
+        try {
+            session = SessionUtil.sessionFactory.openSession();
+            transaction = session.beginTransaction();
+            Product products = findById(product.getId());
+            products.setName(product.getName());
+            products.setPrice(product.getPrice());
+            products.setStatus(product.getStatus());
+            products.setProducer(product.getProducer());
+            session.saveOrUpdate(products);
+            transaction.commit();
+        } catch (HibernateException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        } finally {
+            if (session != null) {
+                session.close();
             }
         }
     }
+
 
     @Override
     public void delete(int id) {
@@ -133,12 +134,13 @@ public class ProductRepository implements IProductRepository {
             session.remove(products);
             transaction.commit();
         } catch (HibernateException e) {
-            if (transaction != null ){
+            if (transaction != null) {
                 transaction.rollback();
             }
-        }finally {
-            if (session != null){
+        } finally {
+            if (session != null) {
                 session.close();
             }
+        }
     }
 }
