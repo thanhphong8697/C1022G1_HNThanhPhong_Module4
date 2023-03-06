@@ -18,6 +18,18 @@ public class Blog {
     @Column(name = "author", nullable = false)
     private String author;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    private Category category;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     public Blog() {
     }
 

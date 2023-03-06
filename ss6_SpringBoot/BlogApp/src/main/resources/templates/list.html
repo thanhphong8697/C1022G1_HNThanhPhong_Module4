@@ -12,9 +12,20 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<p>
-    <a href="/blog/create-form" class="btn btn-secondary">Create</a>
-</p>
+<div class="row">
+    <div class="col-6">
+        <p>
+            <a href="/blog/create-form" class="btn btn-secondary">Create</a>
+        </p>
+    </div>
+    <div class="col-6">
+        <form action="/list" method="get">
+            <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="" value="">
+            <input type="submit" value="Search">
+        </form>
+    </div>
+</div>
+
 <table class="table">
     <thead>
     <tr>
@@ -22,6 +33,7 @@
         <th>Title</th>
         <th>Content</th>
         <th>Author</th>
+        <th>Category</th>
         <th></th>
         <th></th>
     </tr>
@@ -32,12 +44,13 @@
         <td th:text="${blog.getTitle()}"></td>
         <td th:text="${blog.getContent()}"></td>
         <td th:text="${blog.getAuthor()}"></td>
+        <td th:text="${blog.getCategory().getName()}"></td>
         <td>
             <a th:href="@{/blog/update-form/{id}(id = ${blog.getId()})}" class="btn btn-primary">Edit</a>
         </td>
         <td>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#modelId"
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modelId"
                     th:attr="onclick=|getBlogInfo('${blog.id}', '${blog.title}')|">
                 Delete
             </button>
@@ -45,6 +58,9 @@
     </tr>
     </tbody>
 </table>
+<div style="display: flex">
+    <a class="page-item" th:if="${blogPages.hasPrevious()}" th:href=""></a>
+</div>
 <!-- Modal -->
 <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -58,7 +74,7 @@
             <form action="/blog/delete/{id}">
                 <div class="modal-body">
                     <input type="hidden" name="deleteId" id="deleteid">
-                    <span>Bạn múa xoá blog này </span><span id="deleteBlog"></span> ?
+                    <span>Bạn muốn xoá blog </span><span id="deleteBlog"></span> ?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -80,7 +96,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 <script>
-    function getProductInfo(id, title) {
+    function getBlogInfo(id, title) {
         document.getElementById("deleteid").value = id;
         document.getElementById("deleteBlog").innerText = title;
     }

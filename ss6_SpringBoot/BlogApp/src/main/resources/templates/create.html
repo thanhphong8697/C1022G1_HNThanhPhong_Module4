@@ -33,9 +33,18 @@
                 <input type="text" th:field="*{author}">
             </td>
         </tr>
+        <tr>
+            <th>Category</th>
+            <td>
+                <select th:field="*{category.id}">
+                    <option th:each="categorys: ${categoryList}" th:text="${categorys.getName()}"
+                            th:value="${categorys.getId()}"></option>
+                </select>
+            </td>
+        </tr>
     </table>
     <div>
-        <a class="btn btn-primary" href="/list">Back</a>
+        <a class="btn btn-primary" href="/blog">Back</a>
         <input type="submit" value="Create" class="btn btn-secondary">
     </div>
 </form>
