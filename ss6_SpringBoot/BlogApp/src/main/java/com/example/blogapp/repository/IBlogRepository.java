@@ -12,6 +12,6 @@ import java.util.List;
 
 @Repository
 public interface IBlogRepository extends JpaRepository<Blog, Integer> {
-    @Query(value = "SELECT * FROM Blog WHERE name LIKE  %:nameSearch%", nativeQuery = true)
+    @Query(value = "SELECT * FROM Blog WHERE title LIKE  %:nameSearch%", nativeQuery = true)
     Page<Blog> searchName(@Param("nameSearch") String search, Pageable pageable);
 }

@@ -6,6 +6,7 @@ import com.example.blogapp.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,20 +23,20 @@ public class BlogController {
     @Autowired
     private ICategoryService iCategoryService;
 
-    @GetMapping("")
-    public String showList(Model model){
-        model.addAttribute("blogList", iBlogService.listAll());
-        return "/list";
-    }
+//    @GetMapping("")
+//    public String showList(Model model){
+//        model.addAttribute("blogList", iBlogService.listAll());
+//        return "/list";
+//    }
 
     @GetMapping("")
-    public String showListAndSearch(Model model, @RequestParam(name = "names", required = false)String title,
-                                    @PageableDefault(size = 3)Pageable pageable){
+    public String showListAndSearch(Model model, @RequestParam(required = false, defaultValue = "")String title,
+                                    @PageableDefault(sort = "id",direction = Sort.Direction.DESC,size = 3)Pageable pageable){
         Page<Blog> blogPage = title == null
                 ? this.iBlogService.getBlog(pageable)
                 : this.iBlogService.searchBlog(title, pageable);
         model.addAttribute("blogPages", blogPage);
-        model.addAttribute("nameSearch", title);
+        model.addAttribute("nameSearchs", title);
         List<Integer> integers = new ArrayList<>();
         for (int i = 0; i < blogPage.getTotalPages();i++){
             integers.add(i);
