@@ -10,12 +10,26 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        th, td{
+            text-align: center;
+        }
+        .page-item{
+            text-decoration: none;
+            border: 1px solid #000000;
+            margin-right: 7px;
+        }
+        .page-item.number:hover{
+            color: black;
+            background-color: #cccccc;
+        }
+
+    </style>
 </head>
 <body>
-
 <form action="/blog" method="get">
-    <input type="text" class="form-control" name="title" id="nameSearch" placeholder="search">
-    <input type="submit" class="btn btn-secondary" value="Search">
+    <input type="text" class="form-control" style="float: right; width: 400px" name="title" id="nameSearch" placeholder="search" th:value="${nameSearchs}">
+    <input type="submit" class="btn btn-secondary" value="Search" style="float: right">
 </form>
 <p>
     <a href="/blog/create-form" class="btn btn-secondary">Create</a>
@@ -52,12 +66,12 @@
     </tr>
     </tbody>
 </table>
-<div style="display: flex">
-    <a class="page-item" th:if="${blogPages.hasPrevious()}"
+<div style="display: flex; justify-content: center">
+    <a class="page-item number btn btn-dark" th:if="${blogPages.hasPrevious()}"
        th:href="@{/blog(page=${blogPages.number - 1}, title = ${nameSearchs})}">Previous</a>
-    <a class="page-item" th:each="p : ${pages}"
+    <a class="page-item number btn btn-dark" th:each="p : ${pages}"
        th:href="@{/blog(page=${p}, title = ${nameSearchs})}" th:text="${p + 1}"></a>
-    <a class="page-item" th:if="${blogPages.hasNext()}"
+    <a class="page-item number btn btn-dark" th:if="${blogPages.hasNext()}"
        th:href="@{/blog(page=${blogPages.number + 1 }, title = ${nameSearchs})}">Next</a>
 </div>
 <!-- Modal -->
