@@ -11,7 +11,23 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-
+<form action="/song" class="form-group" method="post" th:object="${songDTO}">
+    <div class="form-group">
+        <label for="name">Name Song</label>
+        <input type="text" class="form-control" th:field="*{name}" id="name">
+    </div>
+    <div class="form-group">
+        <label for="singer">Singer</label>
+        <input type="text" class="form-control" th:field="*{singer}" id="singer">
+    </div>
+    <div class="form-group">
+        <label for="type">Type</label>
+        <input type="text" class="form-control" th:field="*{type}" id="type">
+    </div>
+    <div>
+        <input type="submit" value="create">
+    </div>
+</form>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
