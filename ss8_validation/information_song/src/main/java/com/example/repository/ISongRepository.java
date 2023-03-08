@@ -1,4 +1,7 @@
 package com.example.repository;
 
-public interface ISongRepository {
+import com.example.model.Song;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ISongRepository extends JpaRepository<Song,Integer> {
 }

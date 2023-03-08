@@ -11,29 +11,24 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<table class="table">
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Email</th>
-        <th>Age</th>
-        <th>Phone Number</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="users, iterStat: ${userList}">
-      <td th:text="${iterStat.count}"></td>
-      <td th:text="${users.firstName}"></td>
-      <td th:text="${users.lastName}"></td>
-      <td th:text="${users.email}"></td>
-      <td th:text="${users.age}"></td>
-      <td th:text="${users.phoneNumber}"></td>
-    </tr>
-    </tbody>
-</table>
-<!--<div th:if="${msg}" th:text="#{${msg}}"></div>-->
+<form action="/user" class="form-group" method="post" th:object="${userDTOs}">
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" th:field="*{firstName}" id="firstName">
+    </div><div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control" th:field="*{lastName}" id="lastName">
+    </div><div class="form-group">
+        <label for="age">Age</label>
+        <input type="text" class="form-control" th:field="*{age}" id="age">
+    </div><div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" th:field="*{email}" id="email">
+    </div><div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input type="text" class="form-control" th:field="*{phoneNumber}" id="phoneNumber">
+    </div>
+</form>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
