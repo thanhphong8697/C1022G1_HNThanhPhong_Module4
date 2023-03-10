@@ -11,36 +11,24 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<table class="table">
-    <thead>
+<p>
+    <a href="/shopping-cart" class="btn btn-secondary" style="text-decoration: none">Cart</a>
+</p>
+<table>
     <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Borrow code</th>
+        <td>Name</td>
+        <td>Price</td>
+        <td>Add To Cart</td>
     </tr>
-    </thead>
-    <tbody>
-    <tr th:each="books, stt : ${bookDTO}">
-        <td th:text="${stt.count}"></td>
-        <td th:text="${books.title}"></td>
-        <td th:text="${books.price}"></td>
-        <td th:text="${books.quantity}"></td>
-        <td>
-            <a th:href="@{/book/borrow(id = ${bookDTO.id})}">Mượn</a>
-            <p>Mã mượn sách: </p>
-            <span th:text="${bookDTO.code}"></span>
-        </td>
-        <td>
-            <form action="/book/back">
-                <input type="hidden" name="id" th:value="${bookDTO.id}">
-                <input type="text" placeholder="Mã mượn sách" name="code">
-                <input type="submit" class="btn btn-primary" value="Trả sách">
-            </form>
-        </td>
-    </tr>
-    </tbody>
+    <th:block th:each="productDTO : ${productDTOList}">
+        <tr>
+            <td th:text="${productDTO.name}"></td>
+            <td th:text="${productDTO.price}"></td>
+            <td>
+                <a th:href="@{/product/add(id = ${productDTO.id}, action = 'list')}">Add To Cart</a>
+            </td>
+        </tr>
+    </th:block>
 </table>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

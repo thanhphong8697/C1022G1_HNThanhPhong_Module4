@@ -1,0 +1,161 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 1048576 bytes for AllocateHeap
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (memory/allocation.inline.hpp:61), pid=2176, tid=0x0000000000000440
+#
+# JRE version:  (8.0_241-b07) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.241-b07 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000000003322800):  JavaThread "Unknown thread" [_thread_in_vm, id=1088, stack(0x0000000003220000,0x0000000003320000)]
+
+Stack: [0x0000000003220000,0x0000000003320000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x0000000003322800 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=1088, stack(0x0000000003220000,0x0000000003320000)]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+heap address: 0x00000000c1400000, size: 1004 MB, Compressed Oops mode: 32-bit
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 3
+Compressed class space size: 1073741824 Address: 0x0000000100000000
+
+Heap:
+ PSYoungGen      total 18944K, used 327K [0x00000000eb180000, 0x00000000ec680000, 0x0000000100000000)
+  eden space 16384K, 2% used [0x00000000eb180000,0x00000000eb1d1ec8,0x00000000ec180000)
+  from space 2560K, 0% used [0x00000000ec400000,0x00000000ec400000,0x00000000ec680000)
+  to   space 2560K, 0% used [0x00000000ec180000,0x00000000ec180000,0x00000000ec400000)
+ ParOldGen       total 44032K, used 0K [0x00000000c1400000, 0x00000000c3f00000, 0x00000000eb180000)
+  object space 44032K, 0% used [0x00000000c1400000,0x00000000c1400000,0x00000000c3f00000)
+ Metaspace       used 776K, capacity 4480K, committed 4480K, reserved 1056768K
+  class space    used 76K, capacity 384K, committed 384K, reserved 1048576K
+
+Card table byte_map: [0x00000000128e0000,0x0000000012ae0000] byte_map_base: 0x00000000122d6000
+
+Marking Bits: (ParMarkBitMap*) 0x00000000549cbe30
+ Begin Bits: [0x0000000013030000, 0x0000000013fe0000)
+ End Bits:   [0x0000000013fe0000, 0x0000000014f90000)
+
+Polling page: 0x00000000016b0000
+
+CodeCache: size=245760Kb used=328Kb max_used=328Kb free=245431Kb
+ bounds [0x0000000003520000, 0x0000000003790000, 0x0000000012520000]
+ total_blobs=58 nmethods=0 adapters=38
+ compilation: enabled
+
+Compilation events (0 events):
+No events
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (10 events):
+Event: 0.477 loading class java/lang/Short
+Event: 0.477 loading class java/lang/Short done
+Event: 0.477 loading class java/lang/Integer
+Event: 0.478 loading class java/lang/Integer done
+Event: 0.478 loading class java/lang/Long
+Event: 0.479 loading class java/lang/Long done
+Event: 0.480 loading class java/lang/NullPointerException
+Event: 0.480 loading class java/lang/NullPointerException done
+Event: 0.480 loading class java/lang/ArithmeticException
+Event: 0.480 loading class java/lang/ArithmeticException done
+
+
+Dynamic libraries:
+0x00007ff610690000 - 0x00007ff6106c7000 	C:\Program Files\Java\jdk1.8.0_241\bin\java.exe
+0x00007fffa0f10000 - 0x00007fffa1108000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007fffa0e10000 - 0x00007fffa0ecf000 	C:\Windows\System32\KERNEL32.DLL
+0x00007fff9ec70000 - 0x00007fff9ef42000 	C:\Windows\System32\KERNELBASE.dll
+0x00007fff9ef90000 - 0x00007fff9f03e000 	C:\Windows\System32\ADVAPI32.dll
+0x00007fffa07d0000 - 0x00007fffa086e000 	C:\Windows\System32\msvcrt.dll
+0x00007fff9f2d0000 - 0x00007fff9f36c000 	C:\Windows\System32\sechost.dll
+0x00007fffa0ce0000 - 0x00007fffa0e05000 	C:\Windows\System32\RPCRT4.dll
+0x00007fff9fde0000 - 0x00007fff9ff81000 	C:\Windows\System32\USER32.dll
+0x00007fff9e770000 - 0x00007fff9e792000 	C:\Windows\System32\win32u.dll
+0x00007fffa0440000 - 0x00007fffa046b000 	C:\Windows\System32\GDI32.dll
+0x00007fff9e8d0000 - 0x00007fff9e9df000 	C:\Windows\System32\gdi32full.dll
+0x00007fff9e9e0000 - 0x00007fff9ea7d000 	C:\Windows\System32\msvcp_win.dll
+0x00007fff9e7a0000 - 0x00007fff9e8a0000 	C:\Windows\System32\ucrtbase.dll
+0x00007fff90a60000 - 0x00007fff90cfa000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.1110_none_60b5254171f9507e\COMCTL32.dll
+0x00007fff9ef50000 - 0x00007fff9ef82000 	C:\Windows\System32\IMM32.DLL
+0x0000000054a50000 - 0x0000000054b22000 	C:\Program Files\Java\jdk1.8.0_241\jre\bin\msvcr100.dll
+0x00000000541a0000 - 0x0000000054a4c000 	C:\Program Files\Java\jdk1.8.0_241\jre\bin\server\jvm.dll
+0x00007fff9f1f0000 - 0x00007fff9f1f8000 	C:\Windows\System32\PSAPI.DLL
+0x00007fff97920000 - 0x00007fff9792a000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007fff8edf0000 - 0x00007fff8ee17000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007fff89840000 - 0x00007fff89849000 	C:\Windows\SYSTEM32\WSOCK32.dll
+0x00007fffa0340000 - 0x00007fffa03ab000 	C:\Windows\System32\WS2_32.dll
+0x00007fff9bdd0000 - 0x00007fff9bddf000 	C:\Program Files\Java\jdk1.8.0_241\jre\bin\verify.dll
+0x00007fff9bcf0000 - 0x00007fff9bd19000 	C:\Program Files\Java\jdk1.8.0_241\jre\bin\java.dll
+0x00007fff923b0000 - 0x00007fff923d3000 	C:\Program Files\Java\jdk1.8.0_241\jre\bin\instrument.dll
+0x00007fff9bd30000 - 0x00007fff9bd46000 	C:\Program Files\Java\jdk1.8.0_241\jre\bin\zip.dll
+
+VM Arguments:
+jvm_args: -XX:TieredStopAtLevel=1 -Xverify:none -Dspring.output.ansi.enabled=always -javaagent:D:\IntelliJ IDEA 2021.2.4\lib\idea_rt.jar=54865:D:\IntelliJ IDEA 2021.2.4\bin -Dcom.sun.management.jmxremote -Dspring.jmx.enabled=true -Dspring.liveBeansView.mbeanDomain -Dspring.application.admin.enabled=true -Dfile.encoding=UTF-8 
+java_command: com.example.codegym.CodegymApplication
+java_class_path (initial): C:\Program Files\Java\jdk1.8.0_241\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_241\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_241\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_241\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_241\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_241\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_241\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_241\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_241\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_241\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_241\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_241\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_241\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_241\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_241\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_241\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_241\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_241\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_241\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_241\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_241\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_241\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_241\jre\lib\rt.jar;D:\CODEGYM2\Module 4\ss10_session_cookie\codegym\build\classes\java\main;D:\CODEGYM2\Module 4\ss10_session_cookie\codegym\build\resources\main;C:\Users\Admin\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-starter-data-jpa\2.6.14\bb3fa7245ed838491973ba69975f7145c160079a\spring-boot-starter-data-jpa-2.6.14.jar;C:\Users\Admin\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-starter-thymeleaf\2.6.14\a30c771394fec3fe14fe23a55d757b023ee9d082\spring-boot-starter-thymeleaf-2.6.14.jar;C:\Users\Admin\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-starter-web\2.6.14\102724f6e75df9
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Users\Admin\AppData\Local\Microsoft\WindowsApps;C:\Users\Admin\AppData\Local\GitHubDesktop\bin
+USERNAME=Admin
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 61 Stepping 4, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10.0 , 64 bit Build 19041 (10.0.19041.2546)
+
+CPU:total 4 (initial active 4) (2 cores per cpu, 2 threads per core) family 6 model 61 stepping 4, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx
+
+Memory: 4k page, physical 4107668k(512968k free), swap 9537092k(5608k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (25.241-b07) for windows-amd64 JRE (1.8.0_241-b07), built on Dec 11 2019 10:21:40 by "rejava" with MS VC++ 10.0 (VS2010)
+
+time: Fri Mar 10 16:15:41 2023
+timezone: SE Asia Standard Time
+elapsed time: 0 seconds (0d 0h 0m 0s)
+
